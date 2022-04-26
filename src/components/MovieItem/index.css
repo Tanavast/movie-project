@@ -1,0 +1,62 @@
+.ant-card-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 360px;
+}
+.info_container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info_list {
+  display: flex;
+  width: 90%;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-height: 52px;
+  overflow-y: hidden;
+}
+.info_list span {
+  padding: 0 2px;
+  margin: 2px;
+  border-radius: 3px;
+  background: #d3d3d3;
+  color: #000;
+}
+.info_list span:first-child {
+  background: #177ddc;
+  color: #fff;
+}
+.movie_card {
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.movie_card_img {
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.movie_card:hover .movie_card_img {
+  transform: scale(1.04);
+  filter: blur(3px) grayscale(1);
+}
+.movie_card::before {
+  transition: 0.3s ease-in-out;
+  content: "Show more";
+  line-height: 26px;
+  color: #177ddc;
+  font-size: 36px;
+  opacity: 0;
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px 0;
+  border-radius: 5px;
+}
+.movie_card:hover::before {
+  opacity: 1;
+  filter: blur(-5px) grayscale(-0.5);
+}

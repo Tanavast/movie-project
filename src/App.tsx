@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import AppRouter from "./components/AppRouter";
+import Navbar from "./components/Header";
 
-function App() {
+import "./App.css";
+import { useActions } from "./hooks/useActions";
+import { IUser } from "./models/IUsers";
+
+const App: React.FC = () => {
+  const { setUser, setIsAuth, getGenresList } = useActions();
+
+  useEffect(() => {
+    if (localStorage.getItem("auth")) {
+      setUser({ username: localStorage.getItem("username" || "") } as IUser);
+      setIsAuth(true);
+      getGenresList();
+    }
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <AppRouter />
     </div>
   );
-}
+};
 
 export default App;

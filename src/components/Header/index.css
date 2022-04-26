@@ -1,0 +1,17 @@
+.nav-menu {
+  border: none !important;
+}
+.user-name {
+  padding-left: 10px;
+  text-transform: capitalize;
+}
+.ant-menu {
+  overflow: hidden !important;
+  height: 63px !important;
+}
+.user-name__container {
+  display: flex;
+  background: #1f1f1f;
+  padding: 0px 15px 15px 0px;
+  height: 63px !important;
+}
