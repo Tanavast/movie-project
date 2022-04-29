@@ -10,9 +10,18 @@ interface SelectComponent {
   defaultValue?: string;
   mode?: "multiple" | "tags" | undefined;
   allowClear: boolean;
+  disabled: boolean;
 }
 
-const MappedSelect: FC<SelectComponent> = ({ item, handleChange, placeholder, defaultValue, mode, allowClear }) => {
+const MappedSelect: FC<SelectComponent> = ({
+  item,
+  handleChange,
+  placeholder,
+  defaultValue,
+  mode,
+  allowClear,
+  disabled,
+}) => {
   const [isPending, startTransition] = useTransition();
 
   return (
@@ -23,6 +32,7 @@ const MappedSelect: FC<SelectComponent> = ({ item, handleChange, placeholder, de
       defaultValue={defaultValue}
       placeholder={placeholder}
       onChange={handleChange}
+      disabled={disabled}
     >
       {item.map((p) => (
         <Option key={p.id} value={p.id}>

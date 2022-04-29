@@ -19,4 +19,9 @@ export default class MovieService {
   static getGenresList(): Promise<AxiosResponse<any>> {
     return axios.get<any>(`${API_URL}/genre/movie/list${API_KEY}`);
   }
+  static searchMovie(query: string, page: number, year: number | undefined): Promise<AxiosResponse<any>> {
+    return axios.get<any>(
+      `${API_URL}/search/movie` + API_KEY + `&query=${query}&primary_release_year=${year}&page=${page}`
+    );
+  }
 }

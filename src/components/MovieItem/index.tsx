@@ -35,7 +35,7 @@ const MovieItem: FC<MovieItem> = (props) => {
       <div className="info_container">
         <Stars rating={vote_average / 2} />
         <div className="info_list" ref={ref}>
-          <span>{release_date.slice(0, 4)}</span>
+          <span>{release_date?.slice(0, 4)}</span>
           {genre_ids?.map((p) => (
             <GenreItem key={p} genre={p} />
           ))}

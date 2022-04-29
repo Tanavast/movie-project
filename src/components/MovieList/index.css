@@ -11,3 +11,11 @@
 .ant-pagination-options-size-changer {
   display: none !important;
 }
+.movieList_error {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 42px;
+}

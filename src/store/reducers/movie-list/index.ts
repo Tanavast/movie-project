@@ -12,6 +12,7 @@ const initialState: MovieListState = {
   total: undefined,
   sort_by: "popularity.desc",
   genres: [] as IGenre[],
+  search_query: "",
 };
 
 export default function movieReducer(state = initialState, action: MovieListAction): MovieListState {
@@ -34,6 +35,8 @@ export default function movieReducer(state = initialState, action: MovieListActi
       return { ...state, year: action.payload };
     case MovieListActionEnum.SET_MOVIE_LIST:
       return { ...state, movie_list: action.payload, isLoading: false };
+    case MovieListActionEnum.SET_SEARCH_QUERY:
+      return { ...state, search_query: action.payload };
     default:
       return state;
   }

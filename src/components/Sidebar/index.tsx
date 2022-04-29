@@ -7,7 +7,7 @@ import { sortOptios } from "../../utils/sortOptions";
 import { getYears } from "../../utils/years";
 
 const Sidebar: FC = () => {
-  const { genres } = useTypedSelector((store) => store.movieList);
+  const { genres, search_query } = useTypedSelector((store) => store.movieList);
   const { setWithGenres, setSortBy, setIsLoading, setYear } = useActions();
 
   const handleGenresChange = (value: string) => {
@@ -33,6 +33,7 @@ const Sidebar: FC = () => {
           handleChange={handleSortChange}
           allowClear={false}
           defaultValue="popularity.desc"
+          disabled={search_query === "" ? false : true}
         />
       </div>
       <div className="sidebar_item_container">
@@ -43,6 +44,7 @@ const Sidebar: FC = () => {
           handleChange={handleGenresChange}
           placeholder="Select genres"
           allowClear={true}
+          disabled={search_query === "" ? false : true}
         />
       </div>
       <div className="sidebar_item_container">
@@ -53,6 +55,7 @@ const Sidebar: FC = () => {
           handleChange={handleYearChange}
           placeholder="Select release years"
           allowClear={true}
+          disabled={search_query === "" ? false : true}
         />
       </div>
     </aside>

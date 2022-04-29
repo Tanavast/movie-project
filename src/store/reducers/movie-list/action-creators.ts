@@ -10,6 +10,7 @@ import {
   SetWithGenres,
   SetYear,
   SetGenresList,
+  SetSearchQuery,
 } from "./types";
 import { AppDispatch } from "../../index";
 import MovieService from "../../../api/MovieService";
@@ -30,6 +31,7 @@ export const MovieListAC = {
   setYear: (year: number): SetYear => ({ type: MovieListActionEnum.SET_YEAR, payload: year }),
   setWithGenres: (genres: string): SetWithGenres => ({ type: MovieListActionEnum.SET_WITH_GENRES, payload: genres }),
   setMovieList: (movies: IMovie[]): SetMovieList => ({ type: MovieListActionEnum.SET_MOVIE_LIST, payload: movies }),
+  setSearchQuery: (query: string): SetSearchQuery => ({ type: MovieListActionEnum.SET_SEARCH_QUERY, payload: query }),
 
   getMovieList: (page: number, sortBy: string, genres: string, year: number | undefined) => (dispatch: AppDispatch) => {
     MovieService.getMovieList(page, sortBy, genres, year)
@@ -50,6 +52,18 @@ export const MovieListAC = {
         dispatch(MovieListAC.setGenresList(res.data.genres));
       })
       .catch((err) => {
+        console.log(err);
+      });
+  },
+
+  getSearchResult: (query: string, page: number, year: number | undefined) => (dispatch: AppDispatch) => {
+    MovieService.searchMovie(query, page, year)
+      .then((res) => {
+        dispatch(MovieListAC.setMovieList(res.data.results));
+        dispatch(MovieListAC.setTotal(res.data.total_results));
+      })
+      .catch((err) => {
+        dispatch(MovieListAC.setError("Oops, something went wrong!"));
         console.log(err);
       });
   },
