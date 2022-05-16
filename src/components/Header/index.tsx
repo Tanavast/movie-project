@@ -6,6 +6,7 @@ import { useTypedSelector } from "../../hooks/useTypedSelector";
 import { useActions } from "../../hooks/useActions";
 import { useLocationCheck } from "../../hooks/useLocationCheck";
 import "./index.css";
+import Search from "./Search";
 
 const Navbar: FC = () => {
   const { isAuth, user } = useTypedSelector((state) => state.auth);
@@ -16,7 +17,8 @@ const Navbar: FC = () => {
 
   return (
     <Layout.Header>
-      <Row justify="end">
+      <Row justify="end" className="header">
+        <Search />
         <Menu mode="horizontal" selectable={false} className="nav-menu" overflowedIndicator={false}>
           {isAuth ? (
             <>

@@ -15,6 +15,7 @@ const MoviePagination: FC = () => {
     }
     return value;
   };
+
   return (
     <Pagination
       current={page}

@@ -11,6 +11,7 @@ export interface MovieListState {
   with_genres: string;
   total: number | undefined;
   genres: IGenre[];
+  search_query: string;
 }
 
 export enum MovieListActionEnum {
@@ -23,11 +24,16 @@ export enum MovieListActionEnum {
   SET_WITH_GENRES = "SET_WITH_GENRES",
   SET_TOTAL = "SET_TOTAL",
   SET_GENRES_LIST = "SET_GENRES_LIST",
+  SET_SEARCH_QUERY = "SET_SEARCH_QUERY",
 }
 
 export interface SetMovieList {
   type: MovieListActionEnum.SET_MOVIE_LIST;
   payload: IMovie[];
+}
+export interface SetSearchQuery {
+  type: MovieListActionEnum.SET_SEARCH_QUERY;
+  payload: string;
 }
 export interface SetGenresList {
   type: MovieListActionEnum.SET_GENRES_LIST;
@@ -71,4 +77,5 @@ export type MovieListAction =
   | SetTotal
   | SetWithGenres
   | SetYear
-  | SetGenresList;
+  | SetGenresList
+  | SetSearchQuery;
